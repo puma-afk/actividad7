@@ -1,2 +1,2 @@
 # actividad7
-sistemas colaborativos , un software con websokec
+sistemas colaborativos , un software con websocket
