@@ -1,0 +1,76 @@
+.home-container {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, #1f2937, #4f46e5);
+  font-family: Arial, sans-serif;
+  padding: 20px;
+}
+
+.home-card {
+  background: white;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 30px;
+  padding: 40px;
+  border-radius: 18px;
+  max-width: 1000px;
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.25);
+  align-items: center;
+}
+
+/* Texto */
+.home-content {
+  flex: 1;
+  min-width: 280px;
+}
+
+.home-title {
+  font-size: 2.2rem;
+  color: #111827;
+  margin-bottom: 15px;
+}
+
+.home-subtitle {
+  font-size: 1.1rem;
+  color: #4b5563;
+  margin-bottom: 15px;
+  line-height: 1.6;
+}
+
+.home-text {
+  font-size: 0.95rem;
+  color: #6b7280;
+  margin-bottom: 25px;
+  line-height: 1.5;
+}
+
+/* Botón */
+.home-button {
+  display: inline-block;
+  padding: 12px 22px;
+  background: #4f46e5;
+  color: white;
+  text-decoration: none;
+  border-radius: 10px;
+  font-weight: bold;
+  transition: 0.3s;
+}
+
+.home-button:hover {
+  background: #4338ca;
+  transform: translateY(-2px);
+}
+
+/* Imagen */
+.home-image {
+  flex: 1;
+  min-width: 280px;
+  text-align: center;
+}
+
+.home-image img {
+  max-width: 100%;
+  border-radius: 12px;
+}
