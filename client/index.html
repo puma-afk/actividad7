@@ -1,33 +1,13 @@
 <!DOCTYPE html>
 <html>
+<head>
+  <title>Sync Talk</title>
+  <link rel="stylesheet" href="./style.css">
+</head>
+
 <body>
-    <h2>Test WebSocket</h2>
+  <div id="app"></div>
 
-    <input id="msg" placeholder="Escribe mensaje">
-    <button onclick="sendMsg()">Enviar</button>
-
-    <ul id="chat"></ul>
-
-    <script>
-        const ws = new WebSocket("ws://localhost:3000");
-
-        const chat = document.getElementById("chat");
-
-        ws.onopen = () => {
-            console.log("Conectado al servidor");
-        };
-
-        ws.onmessage = (event) => {
-            const li = document.createElement("li");
-            li.textContent = event.data;
-            chat.appendChild(li);
-        };
-
-        function sendMsg() {
-            const input = document.getElementById("msg");
-            ws.send("Yo: " + input.value);
-            input.value = "";
-        }
-    </script>
+  <script type="module" src="./app.js"></script>
 </body>
 </html>
