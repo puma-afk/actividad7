@@ -8,7 +8,7 @@ export function renderLogin() {
     <div class="login-container">
       <div>
         <h1>Login</h1>
-
+          
         <input id="email" placeholder="Email" />
         <input id="password" type="password" placeholder="Password" />
 
@@ -33,11 +33,17 @@ export function renderLogin() {
     const password = document.getElementById("password").value;
 
     try {
-      const user = await login(email, password);
-
+      
       // guardar sesión
-      localStorage.setItem("auth", "true");
-      localStorage.setItem("user", JSON.stringify(user));
+      const data = await login(email, password);
+
+      localStorage.setItem("token", data.token);
+
+      localStorage.setItem(
+      "user",
+      JSON.stringify(data.user)
+      );
+      
 
       // redirigir SPA
       navigate("/dashboard");
