@@ -1,14 +1,21 @@
-
 import { router } from "./utils/router.js";
+// IMPORTAMOS TUS COMPONENTES
+import { initUsersComponent } from "./components/users.js";
+import { initNotificationsComponent } from "./components/notifications.js";
 
-// inicializar SPA
+// Inicializar SPA
 function initApp() {
-  // primera carga
-  router();
+    // Primera carga
+    router();
 
-  // manejar navegación del navegador (back/forward)
-  window.addEventListener("popstate", router);
+    // INICIALIZAMOS TUS TAREAS (US-06 y US-09)
+    // Estos IDs deben existir en el HTML de Noel (luego los revisamos)
+    initUsersComponent('usuarios-conectados');
+    initNotificationsComponent('notificaciones');
+
+    // Manejar navegación
+    window.addEventListener("popstate", router);
 }
 
-// iniciar app
+// Iniciar app
 initApp();
