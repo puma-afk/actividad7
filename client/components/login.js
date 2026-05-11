@@ -14,14 +14,15 @@ export function renderLogin() {
 
         <button id="loginBtn">Entrar</button>
 
-        <button id="googleBtn">Google</button>
-
+        <button id="googleBtn">Continaur con Google</button>
+        <button id="loginsinBtn">Entrar sin login </button>
         <p id="error"></p>
       </div>
     </div>
   `;
 
   const btn = document.getElementById("loginBtn");
+  const btnsin = document.getElementById("loginsinBtn")
   const error = document.getElementById("error");
   const googleBtn = document.getElementById("googleBtn");
   googleBtn.addEventListener("click", () => {
@@ -53,4 +54,8 @@ export function renderLogin() {
       error.textContent = "Credenciales inválidas";
     }
   });
+
+  //btnsin.addEventListener("click", () =>{
+
+  //});
 }

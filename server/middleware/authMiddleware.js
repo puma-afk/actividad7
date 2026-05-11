@@ -1,47 +1,23 @@
 import jwt from "jsonwebtoken";
 
-export function authMiddleware(
-  req,
-  res,
-  next
-) {
+export function authMiddleware(req, res, next) {
+  // Intentar con JWT
+  const authHeader = req.headers.authorization;
 
-  // obtener header
-  const authHeader =
-    req.headers.authorization;
-
-  // verificar existencia
-  if (!authHeader) {
-
-    return res.status(401).json({
-      error: "Token requerido"
-    });
-
+  if (authHeader && authHeader.startsWith("Bearer ")) {
+    const token = authHeader.split(" ")[1];
+    try {
+      const decoded = jwt.verify(token, process.env.JWT_SECRET);
+      req.user = decoded;
+      return next();
+    } catch (error) {}
   }
 
-  // formato:
-  // Bearer TOKEN
-  const token =
-    authHeader.split(" ")[1];
-
-  // validar token
-  try {
-
-    const decoded = jwt.verify(
-      token,
-      process.env.JWT_SECRET
-    );
-
-    // guardar usuario en request
-    req.user = decoded;
-
-    next();
-
-  } catch (error) {
-
-    return res.status(403).json({
-      error: "Token inválido"
-    });
-
+  // Intentar con sesión de Passport
+  if (req.isAuthenticated && req.isAuthenticated()) {
+    req.user = req.user;
+    return next();
   }
+
+  return res.status(401).json({ error: "No autorizado" });
 }

@@ -1,15 +1,12 @@
 import { renderLogin } from "../components/login.js";
 import { renderDashboard } from "../components/dashboard.js";
 
-
 const routes = {
   "/": renderLogin,
   "/login": renderLogin,
   "/dashboard": renderDashboard,
-
 };
 
-// rutas protegidas
 const protectedRoutes = ["/dashboard"];
 
 export function navigate(path) {
@@ -20,16 +17,31 @@ export function navigate(path) {
 export function router() {
   const path = window.location.pathname;
 
-  const isAuth = localStorage.getItem("auth") === "true";
+  // Verificar token en URL (callback de Google)
+  const urlParams = new URLSearchParams(window.location.search);
+  const tokenFromUrl = urlParams.get("token");
 
-  // protección de rutas
+  if (tokenFromUrl) {
+    localStorage.setItem("token", tokenFromUrl);
+    window.history.replaceState({}, "", "/dashboard");
+    navigate("/dashboard");
+    return;
+  }
+
+  const token = localStorage.getItem("token");
+  const isAuth = token !== null;
+
   if (protectedRoutes.includes(path) && !isAuth) {
     navigate("/login");
     return;
   }
 
-  const view = routes[path];
+  if ((path === "/" || path === "/login") && isAuth) {
+    navigate("/dashboard");
+    return;
+  }
 
+  const view = routes[path];
   if (view) {
     view();
   } else {
