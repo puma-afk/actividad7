@@ -1,35 +1,43 @@
-import { navigate } from "../utils/router.js";
+import { getProfile }
+  from "../services/auth.js";
 
-export function renderDashboard() {
-  const app = document.getElementById("app");
+export async function renderDashboard() {
 
-  // obtener usuario
-  const user = JSON.parse(localStorage.getItem("user"));
+  const app =
+    document.getElementById("app");
 
-  app.innerHTML = `
-    <div class="dashboard-container">
+  const token =
+    localStorage.getItem("token");
 
-      <h1>Dashboard</h1>
+  if (!token) {
+    navigate("/login");
+    return;
+  }
 
-      <p>Bienvenido 👋</p>
+  try {
 
-      <div class="user-card">
-        <p><b>Email:</b> ${user?.email || "No disponible"}</p>
+    const data =
+      await getProfile();
+
+    app.innerHTML = `
+      <div>
+
+        <h1>Dashboard</h1>
+
+        <p>
+          Bienvenido
+          ${data.user.name}
+        </p>
+
       </div>
+    `;
 
-      <button id="logoutBtn">Cerrar sesión</button>
+  } catch (error) {
 
-    </div>
-  `;
-
-  const logoutBtn = document.getElementById("logoutBtn");
-
-  logoutBtn.addEventListener("click", () => {
-    // limpiar sesión
-    localStorage.removeItem("auth");
+    localStorage.removeItem("token");
     localStorage.removeItem("user");
 
-    // usar router (NO window.location)
     navigate("/login");
-  });
+
+  }
 }
