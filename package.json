@@ -1,6 +1,26 @@
 {
+  "name": "nexus-chat",
+  "version": "1.0.0",
+  "description": "Sistema de Chat Colaborativo en Tiempo Real con WebSocket",
+  "main": "server/index.js",
+  "scripts": {
+    "start": "node server/index.js",
+    "dev": "nodemon server/index.js"
+  },
   "dependencies": {
-    "express": "^5.2.1",
-    "ws": "^8.20.0"
-  }
+    "dotenv": "^16.4.5",
+    "express": "^4.19.2",
+    "express-session": "^1.19.0",
+    "passport": "^0.7.0",
+    "passport-google-oauth20": "^2.0.0",
+    "sql.js": "^1.12.0",
+    "uuid": "^9.0.1",
+    "ws": "^8.17.0"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.4"
+  },
+  "keywords": ["websocket", "chat", "realtime", "nodejs", "sqlite"],
+  "author": "Equipo NexusChat",
+  "license": "MIT"
 }
