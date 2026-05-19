@@ -1,5 +1,3 @@
-# NexusChat 💬
-
 **Sistema de Chat Colaborativo en Tiempo Real — WebSocket + Google OAuth 2.0**
 
 Chat corporativo con Node.js, Express, WebSocket nativo y autenticación mediante Google OAuth 2.0. Solo usuarios autenticados con su cuenta de Google pueden acceder al chat.
