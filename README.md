@@ -54,7 +54,7 @@ Edita `.env`:
 ```env
 GOOGLE_CLIENT_ID=811285540411-d5rhcpmtudesiartcgr0r7g0hm79uv1b.apps.googleusercontent.com
 GOOGLE_CLIENT_SECRET=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
-SESSION_SECRET=SESSION_SECRET=nexuschat2024_clave_super_secreta_abc123xyz
+SESSION_SECRET=SESSION_SECRET=249f5edd3bd1f846d5ba751aa74febaefcfc021d3f5345f80d17d845c11bdfa5
 PORT=3000
 BASE_URL=http://localhost:3000
 ```
